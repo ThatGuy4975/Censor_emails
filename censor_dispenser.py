@@ -10,7 +10,7 @@ email_four = open("email_four.txt", "r").read()
 # 	censored_phrase = "learning algorithms"
 # 	if censored_phrase in email_input :
 # 		new_input = email_input.replace(censored_phrase, "[Redacted]")
-# 	return new_input
+# 	return new_input 
 
 def censor_open_words(old_input) :
 	split_email_input = old_input.split(' ')
@@ -57,6 +57,24 @@ def censor_paragraph_words(old_input) :
 	joined_email_input = ''.join(new_input)				
 	return joined_email_input
 
+def censor_multiple_word_phrases(old_input) :
+	split_input = old_input.split(' ')
+	new_input = []
+	for word in split_input :
+
+		for term in proprietary_terms :
+			split_proprietary_term = term.split(' ')
+			if len(split_proprietary_term) > 1 :
+				first_word_in_phrase = split_proprietary_term[0]
+				if word == first_word_in_phrase :
+					location_of_first_phrase_word_in_email = split_input.index(first_word_in_phrase)
+
+
+				
+					
+
+
+				
 
 
 def censor_multiple_phrases(email_input) :
@@ -66,9 +84,9 @@ def censor_multiple_phrases(email_input) :
 	# print(initial_censor)
 
 	second_censor = censor_paragraph_words(initial_censor)
-	# print(second_censor)
+	print(second_censor)
 
-
+	censor_multiple_word_phrases(second_censor)
 
 
 
